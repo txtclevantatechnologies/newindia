@@ -1,0 +1,889 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin Dashboard | New India Matric School</title>
+  <link rel="icon" href="../assets/images/school-logo.png" type="image/png">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <style>
+    .dashboard {
+      width: min(100% - 32px, 1180px);
+      margin: 36px auto 64px;
+    }
+
+    .dashboard-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 18px;
+      padding: clamp(24px, 4vw, 40px);
+      border: 1px solid #ffffff1a;
+      border-radius: 22px;
+      color: white;
+      background:
+        radial-gradient(ellipse at 85% 0%, #2563eb55, transparent 38%),
+        linear-gradient(135deg, #102a43, #071526 82%);
+      box-shadow: 0 18px 48px #102a4317;
+    }
+
+    .dashboard-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .dashboard-mark {
+      display: grid;
+      place-items: center;
+      width: 64px;
+      height: 64px;
+      flex: 0 0 auto;
+      background: url("../assets/images/school-logo.png") center / contain no-repeat;
+      font-size: 0;
+    }
+
+    .dashboard-header .eyebrow {
+      margin: 0 0 7px;
+      color: #f4df91;
+      font-size: 10px;
+      letter-spacing: 2px;
+    }
+
+    .dashboard-header h1 {
+      margin: 0 0 6px;
+      font: 700 clamp(24px, 4vw, 34px)/1.15 Georgia, serif;
+    }
+
+    .dashboard-header p {
+      margin: 0;
+      color: #d5dfec;
+    }
+
+    .dashboard-header-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .dashboard button,
+    .dashboard-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 16px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      background: #d4af37;
+      color: #071526;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 750;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .18s ease, background-color .18s ease;
+    }
+
+    .dashboard button:hover:not(:disabled),
+    .dashboard-action:hover {
+      transform: translateY(-1px);
+    }
+
+    .dashboard-header .dashboard-action {
+      border-color: #ffffff3b;
+      color: white;
+      background: #ffffff12;
+    }
+
+    .dashboard button:focus-visible,
+    .dashboard a:focus-visible {
+      outline: 3px solid #2563eb;
+      outline-offset: 3px;
+    }
+
+    .dashboard button:disabled {
+      cursor: wait;
+      opacity: .65;
+    }
+
+    .dashboard-overview {
+      margin-top: 26px;
+      scroll-margin-top: 24px;
+    }
+
+    .dashboard-overview-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .dashboard-overview-heading h2 {
+      margin: 0;
+      color: #102a43;
+      font: 700 23px Georgia, serif;
+    }
+
+    .dashboard-overview-heading p {
+      margin: 0;
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    .dashboard-overview-tools {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .dashboard-stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .dashboard-stat {
+      min-height: 116px;
+      padding: 18px;
+      border: 1px solid #e2e8f0;
+      border-radius: 15px;
+      background: white;
+      box-shadow: 0 8px 26px #102a4308;
+    }
+
+    .dashboard-stat-label {
+      display: block;
+      color: #64748b;
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .dashboard-stat-value {
+      display: block;
+      margin-top: 9px;
+      color: #102a43;
+      font: 700 30px Georgia, serif;
+    }
+
+    .dashboard-stat-value[data-state="loading"] {
+      color: #94a3b8;
+    }
+
+    .dashboard-nav {
+      position: sticky;
+      z-index: 5;
+      top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 24px 0;
+      padding: 8px;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      background: #ffffffed;
+      box-shadow: 0 8px 24px #102a430c;
+      backdrop-filter: blur(12px);
+    }
+
+    .dashboard-nav a {
+      padding: 10px 13px;
+      border-radius: 9px;
+      color: #334155;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .dashboard-nav a:hover,
+    .dashboard-nav a:focus-visible {
+      color: #102a43;
+      background: #f1f5f9;
+      outline: none;
+    }
+
+    .dashboard-card {
+      margin-top: 20px;
+      padding: clamp(20px, 3vw, 30px);
+      border: 1px solid #e2e8f0;
+      border-radius: 17px;
+      background: white;
+      box-shadow: 0 8px 26px #102a4308;
+      scroll-margin-top: 84px;
+    }
+
+    .dashboard-card > h2 {
+      margin: 4px 0 8px;
+      color: #102a43;
+      font: 700 25px Georgia, serif;
+    }
+
+    .dashboard-card > p {
+      line-height: 1.75;
+      color: #64748b;
+    }
+
+    .dashboard-card .eyebrow.gold-text {
+      margin: 0 0 8px;
+      color: #9b7912;
+      font-size: 10px;
+      letter-spacing: 2px;
+    }
+
+    .dashboard-status {
+      color: #15803d !important;
+    }
+
+    .dashboard .back-link {
+      color: #1d4ed8;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .dashboard .back-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 760px) {
+      .dashboard {
+        margin-top: 16px;
+      }
+
+      .dashboard-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .dashboard {
+        width: min(100% - 20px, 1180px);
+      }
+
+      .dashboard-header {
+        align-items: flex-start;
+      }
+
+      .dashboard-header-actions {
+        width: 100%;
+      }
+
+      .dashboard-header-actions > * {
+        flex: 1;
+      }
+
+      .dashboard-stats {
+        gap: 9px;
+      }
+
+      .dashboard-stat {
+        min-height: 102px;
+        padding: 14px;
+      }
+
+      .dashboard-stat-value {
+        font-size: 26px;
+      }
+
+      .dashboard-nav {
+        position: static;
+      }
+    }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.dashboard .admin-list-tools {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#galleryManager .admin-list-tools input {
+  width: auto;
+  flex: 1 1 240px;
+  margin: 0;
+}
+
+#galleryManager .admin-list-tools select {
+  width: auto;
+  margin: 0;
+}
+
+.admin-list-tools input,
+.admin-list-tools select,
+.enquiry-filters input,
+.enquiry-filters select {
+  min-height: 42px;
+  padding: 9px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  color: #172033;
+  background: white;
+  font: inherit;
+}
+
+.admin-list-tools input,
+.enquiry-filters input {
+  flex: 1 1 240px;
+}
+
+.dashboard .admin-list-tools label:not(.sr-only),
+.dashboard .enquiry-filters label:not(.sr-only) {
+  color: #334155;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.admin-list-tools :focus-visible,
+.enquiry-filters :focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.announcement-card[hidden] {
+  display: none;
+}
+
+.dashboard .privacy-copy {
+  font-size: 12px;
+}
+
+.dashboard .enquiry-filters #exportEnquiries {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+  color: #102a43;
+}
+
+.dashboard .enquiry-filters #exportEnquiries:disabled {
+  cursor: not-allowed;
+  opacity: .55;
+}
+
+.announcement-form {
+  display: grid;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.announcement-form > label {
+  margin-top: 10px;
+  color: #102a43;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.announcement-form input:not([type="checkbox"]),
+.announcement-form select,
+.announcement-form textarea {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #fff;
+  color: #172033;
+  font: inherit;
+}
+
+.announcement-form input:focus,
+.announcement-form select:focus,
+.announcement-form textarea:focus {
+  outline: 2px solid #2563eb55;
+  border-color: #2563eb;
+}
+
+.announcement-form textarea {
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.announcement-form .publish-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.publish-option input {
+  width: 17px;
+  height: 17px;
+  accent-color: #2563eb;
+}
+
+.announcement-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.announcement-actions button {
+  min-height: 40px;
+}
+
+.announcement-actions .secondary-button,
+.announcement-actions .action-button {
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  background: #fff;
+  color: #102a43;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.announcement-actions .danger {
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+
+.announcement-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.announcement-card {
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #f8fafc;
+}
+
+.announcement-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.announcement-heading h3 {
+  margin: 0;
+  color: #102a43;
+  font-size: 18px;
+}
+
+.announcement-body {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.7;
+}
+
+.pill {
+  padding: 5px 10px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.pill.published {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.pill.draft {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.module-status {
+  min-height: 24px;
+  margin-top: 16px;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.module-status.error {
+  color: #b91c1c;
+}
+
+.module-status.success {
+  color: #15803d;
+}
+
+.announcement-actions button:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
+
+
+
+
+
+
+
+#galleryManager input,
+#galleryManager select {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 6px 0 16px;
+  border: 1px solid #dbe3ed;
+  border-radius: 9px;
+  background: #fff;
+  color: #172033;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+#galleryManager input:focus,
+#galleryManager select:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+#galleryManager button {
+  margin: 5px 8px 5px 0;
+  padding: 10px 15px;
+  border: 0;
+  border-radius: 8px;
+  background: #102a43;
+  color: #fff;
+  cursor: pointer;
+}
+
+#galleryManager button:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
+#galleryManager button[hidden] {
+  display: none;
+}
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+  <main class="dashboard">
+    <header class="dashboard-header">
+      <div class="dashboard-brand">
+        <span class="dashboard-mark" aria-hidden="true">NI</span>
+        <div>
+          <p class="eyebrow">ADMINISTRATION</p>
+          <h1>School Admin</h1>
+          <p>New India Matric School &middot; Gudamalai</p>
+        </div>
+      </div>
+      <div class="dashboard-header-actions">
+        <a class="dashboard-action" href="../index.html">View website</a>
+        <button id="logoutButton" type="button">Sign out</button>
+      </div>
+    </header>
+
+    <section class="dashboard-card">
+      <p class="eyebrow gold-text">ADMINISTRATION</p>
+      <h2>Welcome to your dashboard</h2>
+      <p>Manage school updates, public pages, gallery media, and private enquiries from one place.</p>
+      <p id="dashboardStatus" role="status" aria-live="polite">
+        Verifying your access…
+      </p>
+      <p id="adminEmail"></p>
+    </section>
+
+    <section class="dashboard-overview" aria-labelledby="overviewTitle">
+      <div class="dashboard-overview-heading">
+        <h2 id="overviewTitle">At a glance</h2>
+        <div class="dashboard-overview-tools">
+          <p id="dashboardCountsUpdated">Counts update when this dashboard opens.</p>
+          <button id="dashboardRefreshCounts" type="button">Refresh counts</button>
+        </div>
+      </div>
+      <div class="dashboard-stats" aria-live="polite">
+        <article class="dashboard-stat">
+          <span class="dashboard-stat-label">Published announcements</span>
+          <strong class="dashboard-stat-value" id="publishedAnnouncementCount" data-state="loading">...</strong>
+        </article>
+        <article class="dashboard-stat">
+          <span class="dashboard-stat-label">Published gallery items</span>
+          <strong class="dashboard-stat-value" id="publishedGalleryCount" data-state="loading">...</strong>
+        </article>
+        <article class="dashboard-stat">
+          <span class="dashboard-stat-label">New enquiries</span>
+          <strong class="dashboard-stat-value" id="newEnquiryCount" data-state="loading">...</strong>
+        </article>
+        <article class="dashboard-stat">
+          <span class="dashboard-stat-label">Published content items</span>
+          <strong class="dashboard-stat-value" id="publishedContentCount" data-state="loading">...</strong>
+        </article>
+      </div>
+    </section>
+
+    <nav class="dashboard-nav" aria-label="Dashboard sections">
+      <a href="#announcementsManager">Announcements</a>
+      <a href="#galleryManager">Gallery</a>
+      <a href="#siteContentManager">Website content</a>
+      <a href="#enquiriesManager">Enquiries</a>
+    </nav>
+
+    <section class="dashboard-card">
+      <h2>Before publishing</h2>
+      <p>Public page copy is rendered as text; HTML and scripts are never executed. The school logo is stored separately in the public branding bucket, while gallery uploads remain private until approved.</p>
+      <p>Publish only information approved by the school. Enquiries are private and visible only to authorized administrators.</p>
+    </section>
+
+
+
+
+
+
+    <section class="dashboard-card" id="galleryManager">
+  <p class="eyebrow gold-text">MEDIA MANAGEMENT</p>
+  <h2>Images &amp; Videos</h2>
+  <p>Upload school photos or add a YouTube video link.</p>
+
+  <form id="galleryForm" class="announcement-form">
+    <label for="galleryTitle">Title / caption</label>
+    <input
+      id="galleryTitle"
+      type="text"
+      maxlength="200"
+      required
+      placeholder="Example: Annual Day Celebration"
+    >
+
+    <label for="galleryCategory">Category</label>
+    <select id="galleryCategory" required>
+      <option value="Campus">Campus</option>
+      <option value="Classrooms">Classrooms</option>
+      <option value="Laboratories">Laboratories</option>
+      <option value="Sports">Sports</option>
+      <option value="Events">Events</option>
+      <option value="Achievements">Achievements</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <label for="galleryType">Media type</label>
+    <select id="galleryType" required>
+      <option value="image">Image upload</option>
+      <option value="video_file">Video file upload</option>
+      <option value="youtube">YouTube video link</option>
+    </select>
+
+    <label for="galleryFile">Select image or video</label>
+    <input
+      id="galleryFile"
+      type="file"
+      accept="image/jpeg,image/png,image/webp,image/gif"
+    >
+
+    <label for="galleryVideoUrl">YouTube video URL</label>
+    <input
+      id="galleryVideoUrl"
+      type="url"
+      maxlength="500"
+      placeholder="https://www.youtube.com/watch?v=..."
+    >
+
+    <label for="galleryAlt">Image description (accessibility)</label>
+    <input
+      id="galleryAlt"
+      type="text"
+      maxlength="250"
+      placeholder="Describe the image"
+    >
+
+    <label for="gallerySortOrder">Display order</label>
+    <input id="gallerySortOrder" type="number" min="-100000" max="100000" step="1" value="0" required>
+
+    <label class="publish-option" for="galleryPublished">
+      <input id="galleryPublished" type="checkbox">
+      Publish immediately
+    </label>
+
+    <button id="saveGalleryItem" type="submit">
+      Upload &amp; Save
+    </button>
+
+    <button id="cancelGalleryEdit" type="button" hidden>
+      Cancel edit
+    </button>
+  </form>
+
+  <p id="galleryStatus" class="module-status" role="status" aria-live="polite">
+    Ready to manage gallery media.
+  </p>
+
+  <div class="admin-list-tools">
+    <label class="sr-only" for="gallerySearch">Search gallery items</label>
+    <input id="gallerySearch" type="search" placeholder="Search title or category">
+    <label for="galleryVisibilityFilter">Visibility</label>
+    <select id="galleryVisibilityFilter">
+      <option value="all">All items</option>
+      <option value="published">Published</option>
+      <option value="draft">Drafts</option>
+    </select>
+  </div>
+  <div id="adminGalleryList" class="announcement-list"></div>
+</section>
+
+
+
+
+
+
+
+    
+<section class="dashboard-card" id="announcementsManager">
+  <p class="eyebrow gold-text">CONTENT MANAGEMENT</p>
+  <h2>Announcements &amp; News</h2>
+  <p>Create school notices, manage drafts, and publish announcements.</p>
+
+  <form id="announcementForm" class="announcement-form">
+    <label for="announcementTitle">Announcement title</label>
+    <input
+      id="announcementTitle"
+      type="text"
+      maxlength="200"
+      required
+      placeholder="Enter announcement title"
+    >
+
+    <label for="announcementCategory">Category</label>
+    <select id="announcementCategory" required>
+      <option value="General">General</option>
+      <option value="Academic">Academic</option>
+      <option value="Events">Events</option>
+      <option value="Admissions">Admissions</option>
+      <option value="Sports">Sports</option>
+      <option value="Achievements">Achievements</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <label for="announcementBody">Announcement details</label>
+    <textarea
+      id="announcementBody"
+      maxlength="10000"
+      rows="6"
+      required
+      placeholder="Write the announcement here"
+    ></textarea>
+
+    <label class="publish-option" for="announcementPublished">
+      <input id="announcementPublished" type="checkbox">
+      Publish immediately
+    </label>
+
+    <div class="announcement-actions">
+      <button id="saveAnnouncement" type="submit">Save announcement</button>
+      <button
+        id="cancelAnnouncementEdit"
+        class="secondary-button"
+        type="button"
+        hidden
+      >Cancel edit</button>
+    </div>
+  </form>
+
+  <p id="announcementStatus" class="module-status" role="status" aria-live="polite">
+    Waiting for administrator verification…
+  </p>
+
+  <div class="admin-list-tools">
+    <label class="sr-only" for="announcementSearch">Search announcements</label>
+    <input id="announcementSearch" type="search" placeholder="Search title, category, or text">
+    <label for="announcementVisibilityFilter">Visibility</label>
+    <select id="announcementVisibilityFilter">
+      <option value="all">All announcements</option>
+      <option value="published">Published</option>
+      <option value="draft">Drafts</option>
+    </select>
+  </div>
+  <div id="announcementList" class="announcement-list"></div>
+</section>
+
+<section class="dashboard-card" id="siteContentManager">
+  <p class="eyebrow gold-text">PUBLIC WEBSITE CONTENT</p>
+  <h2>Editable page content</h2>
+  <p>Choose a page, search its content, then edit and publish approved school information. Text is displayed as plain text; HTML and scripts are never executed.</p>
+  <form id="siteContentForm" class="announcement-form">
+    <div class="site-content-tools">
+      <div>
+        <label for="siteContentSearch">Find content</label>
+        <input id="siteContentSearch" type="search" placeholder="Search fields or text">
+      </div>
+      <div>
+        <label for="siteContentPage">Page</label>
+        <select id="siteContentPage">
+          <option value="all">All pages</option>
+          <option value="home">Home</option>
+          <option value="about">About</option>
+          <option value="academics">Academics</option>
+          <option value="facilities">Facilities</option>
+          <option value="achievements">Achievements</option>
+          <option value="admissions">Admissions</option>
+          <option value="contact">Contact</option>
+          <option value="footer">Footer</option>
+          <option value="branding">Branding</option>
+          <option value="settings">Site settings</option>
+        </select>
+      </div>
+      <p id="siteContentSummary" role="status" aria-live="polite"></p>
+    </div>
+    <div class="site-branding-tools">
+      <div>
+        <p class="site-branding-title">School logo</p>
+        <p class="site-branding-description">Upload a transparent PNG, JPEG, or WebP logo up to 5 MB. Saving the content form applies it across the public website.</p>
+        <label for="siteLogoFile">Choose logo file</label>
+        <input id="siteLogoFile" type="file" accept="image/png,image/jpeg,image/webp">
+        <div class="site-branding-actions">
+          <button id="uploadSiteLogo" type="button">Upload selected logo</button>
+          <button id="resetSiteLogo" class="secondary-button" type="button">Use default logo</button>
+        </div>
+        <p id="siteLogoStatus" class="module-status" role="status" aria-live="polite">Using the default website logo.</p>
+      </div>
+      <img id="siteLogoPreview" class="site-logo-preview" src="../assets/images/school-logo.png" alt="Current school logo preview">
+    </div>
+    <div id="siteContentFields"></div>
+    <button id="saveSiteContent" type="submit">Save website content</button>
+  </form>
+  <p id="siteContentStatus" class="module-status" role="status" aria-live="polite">Waiting for administrator verification…</p>
+</section>
+
+<section class="dashboard-card" id="enquiriesManager">
+  <p class="eyebrow gold-text">PRIVATE ENQUIRIES</p>
+  <h2>Contact &amp; admissions enquiries</h2>
+  <div class="enquiry-filters">
+    <label class="sr-only" for="enquirySearch">Search enquiries</label>
+    <input id="enquirySearch" type="search" placeholder="Search name, email, phone, or message">
+    <label for="enquiryTypeFilter">Type</label>
+    <select id="enquiryTypeFilter"><option value="all">All enquiry types</option><option value="contact">Contact</option><option value="admissions">Admissions</option></select>
+    <label for="enquiryStatusFilter">Status</label>
+    <select id="enquiryStatusFilter"><option value="all">All statuses</option><option value="new">New</option><option value="reviewed">Reviewed</option></select>
+    <button id="refreshEnquiries" type="button">Refresh enquiries</button>
+    <button id="exportEnquiries" type="button">Export filtered CSV</button>
+  </div>
+  <p class="privacy-copy">Export includes contact details and message text from up to 100 currently filtered enquiries. Keep downloaded files private.</p>
+  <p id="enquiriesStatus" class="module-status" role="status" aria-live="polite">Waiting for administrator verification…</p>
+  <div id="enquiriesList" class="announcement-list"></div>
+</section>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1"></script>
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/supabase-client.js"></script>
+  <script src="../assets/js/dashboard.js"></script>
+</body>
+</html>

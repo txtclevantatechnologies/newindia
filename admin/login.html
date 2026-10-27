@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin Login | New India Matric School</title>
+  <link rel="icon" href="../assets/images/school-logo.png" type="image/png">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+  <main class="login-layout">
+    <section class="login-brand">
+      <div class="school-mark" aria-hidden="true">NI</div>
+      <p class="eyebrow">SCHOOL MANAGEMENT</p>
+      <h1>New India<br>Matric School</h1>
+      <p class="brand-description">
+        A dedicated space for managing school website content.
+      </p>
+      <div class="brand-footer">Gudamalai · Tamil Nadu</div>
+    </section>
+
+    <section class="login-panel">
+      <form id="loginForm" class="login-card">
+        <p class="eyebrow gold-text">ADMINISTRATOR ACCESS</p>
+        <h2>Welcome back</h2>
+        <p class="muted">Sign in with your authorised school account.</p>
+
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email"
+               autocomplete="username" required maxlength="254"
+               placeholder="admin@school.org">
+
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password"
+               autocomplete="current-password" required
+               maxlength="128" placeholder="Enter your password">
+
+        <button id="togglePassword" class="password-toggle" type="button"
+                aria-controls="password" aria-pressed="false">Show password</button>
+        <button id="loginButton" type="submit">Sign in securely</button>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+        <a class="back-link" href="../index.html">← Back to school website</a>
+      </form>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1"></script>
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/supabase-client.js"></script>
+  <script src="../assets/js/login.js"></script>
+</body>
+</html>

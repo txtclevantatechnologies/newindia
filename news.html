@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Read the latest announcements, school notices, events, and updates from New India Matric School, Gudamalai.">
+  <meta name="theme-color" content="#102A43">
+  <title>News &amp; Announcements | New India Matric School</title>
+  <link rel="icon" href="assets/images/school-logo.png" type="image/png">
+  <meta property="og:title" content="News &amp; Announcements | New India Matric School">
+  <meta property="og:description" content="Read the latest published notices and school updates from New India Matric School, Gudamalai.">
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <style>
+    .news-hero {
+      padding: 76px 20px 64px;
+      text-align: center;
+      color: #fff;
+      background:
+        radial-gradient(ellipse at top right, rgba(212,175,55,.22), transparent 42%),
+        linear-gradient(135deg, #071526, #102A43 65%, #1d3e61);
+    }
+
+    .news-hero .eyebrow {
+      color: #D4AF37;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: .8rem;
+    }
+
+    .news-hero h1 {
+      margin: 14px 0;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.15;
+    }
+
+    .news-hero p {
+      max-width: 650px;
+      margin: 0 auto;
+      color: #dbe5ef;
+      line-height: 1.8;
+    }
+
+    .news-main {
+      max-width: 1100px;
+      min-height: 400px;
+      margin: 0 auto;
+      padding: 55px 20px 80px;
+    }
+
+    .news-topline {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .news-topline h2 {
+      margin: 0;
+      color: #102A43;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    .news-count {
+      color: #64748b;
+      font-size: .92rem;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      gap: 24px;
+    }
+
+    .news-card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 26px;
+      background: #fff;
+      border: 1px solid #e5eaf0;
+      border-radius: 18px;
+      box-shadow: 0 8px 28px rgba(16, 42, 67, .06);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .news-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 36px rgba(16, 42, 67, .12);
+    }
+
+    .news-card-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 17px;
+    }
+
+    .news-category {
+      display: inline-block;
+      padding: 6px 11px;
+      border-radius: 999px;
+      color: #102A43;
+      background: #fff4cf;
+      font-size: .78rem;
+      font-weight: 700;
+    }
+
+    .news-date {
+      color: #64748b;
+      font-size: .82rem;
+    }
+
+    .news-card h3 {
+      margin: 0 0 13px;
+      color: #102A43;
+      font-size: 1.3rem;
+      line-height: 1.45;
+      overflow-wrap: anywhere;
+    }
+
+    .news-body {
+      color: #475569;
+      line-height: 1.8;
+      overflow-wrap: anywhere;
+      white-space: pre-wrap;
+    }
+
+    .news-empty {
+      padding: 44px 20px;
+      text-align: center;
+      color: #64748b;
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 16px;
+      line-height: 1.8;
+    }
+
+    .news-empty h3 {
+      color: #102A43;
+      margin-top: 0;
+    }
+
+    .news-error {
+      color: #991b1b;
+      background: #fef2f2;
+      border-color: #fecaca;
+    }
+
+    .news-refresh {
+      padding: 10px 16px;
+      border: 1px solid #d4af37;
+      border-radius: 9px;
+      color: #102A43;
+      background: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .news-refresh:hover {
+      background: #fff8e5;
+    }
+
+    .news-refresh:focus-visible {
+      outline: 3px solid #2563eb;
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 600px) {
+      .news-hero {
+        padding: 55px 18px 45px;
+      }
+
+      .news-main {
+        padding: 35px 16px 55px;
+      }
+
+      .news-card {
+        padding: 21px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .news-card {
+        transition: none;
+      }
+
+      .news-card:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="New India Matric School home"><span class="brand-mark">NI</span><span class="brand-copy"><strong>NEW INDIA</strong><small>MATRIC SCHOOL · GUDAMALAI</small></span></a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primaryNavigation"><span></span><span></span><span></span></button>
+    <nav class="navigation" id="primaryNavigation" aria-label="Main navigation">
+      <a href="index.html">Home</a><a href="about.html">About</a><a href="academics.html">Academics</a><a href="facilities.html">Facilities</a><a href="achievements.html">Achievements</a><a href="gallery.html">Gallery</a><a href="news.html" aria-current="page">News</a><a class="nav-cta" href="admissions.html">Admissions</a><a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="news-hero">
+    <p class="eyebrow">School Updates</p>
+    <h1 data-site-content="news.title">News &amp; Announcements</h1>
+    <p data-site-content="news.description">
+      Stay informed about school notices, events, activities, and important
+      announcements from New India Matric School.
+    </p>
+  </section>
+
+  <main class="news-main" data-announcement-widget>
+    <div class="news-topline">
+      <h2 data-site-content="news.list_title">Latest Updates</h2>
+      <button class="news-refresh" id="refreshNews" data-announcements-refresh type="button">
+        Refresh updates
+      </button>
+    </div>
+
+    <p class="news-count" id="newsCount" data-announcements-count aria-live="polite">
+      Loading announcements…
+    </p>
+
+    <section id="newsContainer" class="news-grid" data-announcements-container aria-label="Published school announcements">
+      <div class="news-empty" role="status">
+        Please wait while we load the latest announcements.
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        &copy; <span id="currentYear"></span>
+        New India Matric School, Gudamalai.
+        All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script src="assets/js/navigation.js" defer></script>
+
+  <!-- Supabase public client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/supabase-client.js"></script>
+
+  <script src="assets/js/public-announcements.js" defer></script>
+
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/content.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="View school-approved photographs and videos shared by New India Matric School in Gudamalai.">
+  <meta name="theme-color" content="#102A43"><title>Gallery | New India Matric School</title>
+  <link rel="icon" href="assets/images/school-logo.png" type="image/png">
+  <meta property="og:title" content="Gallery | New India Matric School"><meta property="og:description" content="View approved photographs and videos shared by New India Matric School."><meta property="og:type" content="website">
+  <link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="index.html" aria-label="New India Matric School home"><span class="brand-mark">NI</span><span class="brand-copy"><strong>NEW INDIA</strong><small>MATRIC SCHOOL · GUDAMALAI</small></span></a><button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primaryNavigation"><span></span><span></span><span></span></button><nav class="navigation" id="primaryNavigation" aria-label="Main navigation"><a href="index.html">Home</a><a href="about.html">About</a><a href="academics.html">Academics</a><a href="facilities.html">Facilities</a><a href="achievements.html">Achievements</a><a href="gallery.html" aria-current="page">Gallery</a><a href="news.html">News</a><a class="nav-cta" href="admissions.html">Admissions</a><a href="contact.html">Contact</a></nav></header>
+  <main>
+    <section class="inner-page-hero"><div class="page-container"><p class="eyebrow">SCHOOL GALLERY</p><h1 data-site-content="gallery.title">Moments from our community</h1><p data-site-content="gallery.description">Browse images and videos approved for public sharing by the school.</p></div></section>
+    <section class="page-container content-section">
+      <div class="gallery-tools">
+        <div id="galleryFilters" class="gallery-filters" aria-label="Filter gallery by category"></div>
+        <div class="gallery-controls">
+          <label class="gallery-search-label" for="gallerySearch">Search gallery</label>
+          <input id="gallerySearch" class="gallery-search" type="search" placeholder="Search photos and videos">
+          <label class="gallery-sort-label" for="gallerySort">Sort</label>
+          <select id="gallerySort" class="gallery-sort">
+            <option value="order">Featured order</option>
+            <option value="newest">Newest first</option>
+            <option value="title">Title A–Z</option>
+          </select>
+          <button id="refreshGallery" class="news-refresh" type="button">Refresh gallery</button>
+        </div>
+      </div>
+      <p id="galleryStatus" class="news-count" role="status" aria-live="polite">Loading approved gallery items…</p>
+      <div id="publicGallery" class="public-gallery" aria-label="Published school gallery"></div>
+    </section>
+  </main>
+  <dialog id="galleryLightbox" class="gallery-lightbox" aria-label="Gallery media viewer">
+    <div class="lightbox-header"><p id="lightboxCaption"></p><button id="lightboxClose" type="button" aria-label="Close media viewer">Close</button></div>
+    <div class="lightbox-content"><button id="lightboxPrevious" type="button" aria-label="Previous item">‹</button><div id="lightboxMedia"></div><button id="lightboxNext" type="button" aria-label="Next item">›</button></div>
+  </dialog>
+  <footer class="site-footer"><div class="footer-main"><div><a class="brand footer-brand" href="index.html"><span class="brand-mark">NI</span><span class="brand-copy"><strong>NEW INDIA</strong><small>MATRIC SCHOOL</small></span></a><p data-site-content="footer.text">Learning, growth and opportunity in Gudamalai.</p></div><div><h3>Explore</h3><a href="about.html">About</a><a href="academics.html">Academics</a><a href="facilities.html">Facilities</a></div><div><h3>Information</h3><a href="news.html">News</a><a href="admissions.html">Admissions</a><a href="contact.html">Contact</a></div></div><div class="footer-bottom"><p>© <span id="currentYear"></span> New India Matric School.</p><a href="admin/login.html">Administrator</a></div></footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1"></script><script src="assets/js/config.js"></script><script src="assets/js/supabase-client.js"></script><script src="assets/js/public-gallery.js" defer></script><script src="assets/js/navigation.js" defer></script><script src="assets/js/main.js" defer></script><script src="assets/js/content.js" defer></script>
+</body>
+</html>

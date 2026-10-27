@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Send an admissions enquiry to New India Matric School in Gudamalai. Ask the school for current admission information.">
+  <meta name="theme-color" content="#102A43"><title>Admissions | New India Matric School</title>
+  <link rel="icon" href="assets/images/school-logo.png" type="image/png">
+  <meta property="og:title" content="Admissions | New India Matric School"><meta property="og:description" content="Send an admissions enquiry to New India Matric School in Gudamalai."><meta property="og:type" content="website">
+  <link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="index.html" aria-label="New India Matric School home"><span class="brand-mark">NI</span><span class="brand-copy"><strong>NEW INDIA</strong><small>MATRIC SCHOOL · GUDAMALAI</small></span></a><button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primaryNavigation"><span></span><span></span><span></span></button><nav class="navigation" id="primaryNavigation" aria-label="Main navigation"><a href="index.html">Home</a><a href="about.html">About</a><a href="academics.html">Academics</a><a href="facilities.html">Facilities</a><a href="achievements.html">Achievements</a><a href="gallery.html">Gallery</a><a href="news.html">News</a><a class="nav-cta" href="admissions.html" aria-current="page">Admissions</a><a href="contact.html">Contact</a></nav></header>
+  <main>
+    <section class="inner-page-hero"><div class="page-container"><p class="eyebrow">ADMISSIONS ENQUIRY</p><h1 data-site-content="admissions.title">Start a conversation with our school</h1><p data-site-content="admissions.intro">Send a general enquiry and the school can share current admission procedures. Please do not include sensitive personal information about a child.</p></div></section>
+    <section class="page-container content-section form-layout"><div class="prose"><p class="eyebrow">HOW TO ENQUIRE</p><h2 data-site-content="admissions.method_title">Ask for current details</h2><p data-site-content="admissions.method_description">Admission requirements, class availability, fees and timelines can change. Please contact the school directly for accurate, current information. Submitting this form is an enquiry only and does not guarantee admission.</p><p class="cms-copy" data-site-content="admissions.details">Verified admissions procedures will be added by the school when approved.</p><p class="cms-copy" data-site-content="admissions.fees">Fee information has not been published. Please enquire with the school for current details.</p><div class="notice-panel"><h3 data-site-content="admissions.privacy_title">Privacy note</h3><p data-site-content="admissions.privacy_description">Share only the information needed for the school to respond. Do not submit a child's date of birth, identification numbers, medical records or other sensitive information.</p></div></div>
+      <form class="enquiry-form" data-enquiry-form data-enquiry-type="admissions" novalidate>
+        <h2 data-site-content="admissions.form_title">Admissions enquiry</h2><label for="admissionsName">Your name</label><input id="admissionsName" name="name" autocomplete="name" minlength="2" maxlength="100" required>
+        <label for="admissionsEmail">Email address</label><input id="admissionsEmail" name="email" type="email" autocomplete="email" maxlength="254" required>
+        <label for="admissionsPhone">Phone (optional)</label><input id="admissionsPhone" name="phone" type="tel" autocomplete="tel" maxlength="30">
+        <label for="admissionsMessage">How can we help?</label><textarea id="admissionsMessage" name="message" rows="5" minlength="10" maxlength="5000" required placeholder="Please avoid including sensitive information about a child."></textarea>
+        <div class="form-honeypot" aria-hidden="true"><label for="admissionsWebsite">Leave this field empty</label><input id="admissionsWebsite" name="website" tabindex="-1" autocomplete="off"></div>
+        <button class="button button-gold" type="submit">Send enquiry</button><p class="form-status" role="status" aria-live="polite"></p>
+        <p class="privacy-copy">Your message will be visible only to authorized school administrators and used to respond to your enquiry.</p>
+      </form>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="footer-main"><div><a class="brand footer-brand" href="index.html"><span class="brand-mark">NI</span><span class="brand-copy"><strong>NEW INDIA</strong><small>MATRIC SCHOOL</small></span></a><p data-site-content="footer.text">Learning, growth and opportunity in Gudamalai.</p></div><div><h3>Explore</h3><a href="about.html">About</a><a href="academics.html">Academics</a><a href="facilities.html">Facilities</a></div><div><h3>Information</h3><a href="news.html">News</a><a href="contact.html">Contact</a><a href="admin/login.html">Administrator</a></div></div><div class="footer-bottom"><p>© <span id="currentYear"></span> New India Matric School.</p></div></footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1"></script><script src="assets/js/config.js"></script><script src="assets/js/supabase-client.js"></script><script src="assets/js/enquiry-forms.js" defer></script><script src="assets/js/navigation.js" defer></script><script src="assets/js/main.js" defer></script><script src="assets/js/content.js" defer></script>
+</body>
+</html>
